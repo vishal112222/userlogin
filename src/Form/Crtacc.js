@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import MyInput from './MyInput';
 import Tiles from './Tiles';
-
+import axios from "axios"
 
 const Crtacc = ({ toggleacc }) => {
 
@@ -15,21 +15,30 @@ const Crtacc = ({ toggleacc }) => {
         "jalandhar": false
     };
     const [locations, setLocations] = useState(defaults)
+    const selectedLocations = Object.keys(locations).filter((key) => locations[key]);
 
+    const Submit = async (data) => {
 
-    const Submit = (data) => {
-        console.log(data)
-    }
+        try {
+            const response = await axios.post('http://localhost:3000/api/scripts/mms-user', JSON.stringify({
+                selectedLocations: JSON.stringify(selectedLocations),
+                additionalData: JSON.stringify(data),
+            }));
+            console.log(response.data);
+        } catch (error) {
+            console.error('API request error:', error);
+        }
+    };
 
     const onToggle = (name) => {
-        console.log(name)
+
         const prevValue = locations[name];
         setLocations({
             ...locations,
             [name]: !prevValue
         })
     }
-console.log(locations)
+
     return (
         <>
             <div className='mainbody'>
@@ -38,21 +47,21 @@ console.log(locations)
                         <span className='userhead'>Create User</span>
                     </div>
 
-                    <form onSubmit={handleSubmit(Submit)} className='formbody'>
+                    <form onSubmit={handleSubmit(Submit)} className='formbody' method='POST'>
                         <div className="form-row">
-                            <MyInput name={"FirstName"} errMsg={"First Name field is required"} errors={errors} register={register} label={"FirstName"} />
-                            <MyInput name={"LastName"} errMsg={"Last Name field is required"} errors={errors} register={register} label={"LastName"} />
+                            <MyInput name={"firstname"} errMsg={"First Name field is required"} errors={errors} register={register} label={"FirstName"} />
+                            <MyInput name={"lastname"} errMsg={"Last Name field is required"} errors={errors} register={register} label={"LastName"} />
 
                         </div>
 
                         <div className="form-row">
-                            <MyInput name={"Username"} errMsg={"Username field is required"} errors={errors} register={register} label={"Username"} />
-                            <MyInput name={"Email"} errMsg={"Email field is required"} errors={errors} register={register} label={"Email"} />
+                            <MyInput name={"username"} errMsg={"Username field is required"} errors={errors} register={register} label={"Username"} />
+                            <MyInput name={"email"} errMsg={"Email field is required"} errors={errors} register={register} label={"Email"} />
                         </div>
 
                         <div className="form-row">
-                            <MyInput name={"PhoneNo"} errMsg={"Phone No field is required"} errors={errors} register={register} label={"PhoneNo"} />
-                            <MyInput name={"Address"} errMsg={"Address field is required"} errors={errors} register={register} label={"Address"} />
+                            <MyInput name={"phone"} errMsg={"Phone No field is required"} errors={errors} register={register} label={"PhoneNo"} />
+                            <MyInput name={"address"} errMsg={"Address field is required"} errors={errors} register={register} label={"Address"} />
                         </div>
 
                         <div className='slectionbody'>
@@ -89,6 +98,3 @@ console.log(locations)
 }
 
 export default Crtacc;
-
-
-
