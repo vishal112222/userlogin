@@ -19,6 +19,7 @@ const Crtacc = ({ toggleacc }) => {
 
     const Submit = async (data) => {
 
+        // console.log
         try {
             const response = await axios.post('http://localhost:3000/api/scripts/mms-user', JSON.stringify({
                 selectedLocations: JSON.stringify(selectedLocations),

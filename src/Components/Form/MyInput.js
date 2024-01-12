@@ -1,6 +1,7 @@
 import React from "react";
 
 const MyInput = ({name, errMsg, errors,register,label}) => {
+
     return (
         <div className="input-data">
             <input type="text" {...register(name, { required: { value: true, message: errMsg } })} />

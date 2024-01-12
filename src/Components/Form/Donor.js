@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Crtacc from './Crtacc';
-import './Crt.css'
 
 
 

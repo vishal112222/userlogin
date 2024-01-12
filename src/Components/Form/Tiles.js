@@ -5,7 +5,7 @@ const Tiles = ({ name, onClick, isSelected }) => {
         onClick(name);
     }
     return (
-        <div onClick={onClickHandler} className={`tile ${isSelected ? 'tile-selected' : ''}`}>
+        <div  onClick={onClickHandler} className={`tile ${isSelected ? 'tile-selected' : ''}`}>
             <span name={name} className='title' >{name}</span>
         </div>
     );
