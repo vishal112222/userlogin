@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Crtacc from '../Form/Crtacc';
 import DropDown from '../Dropdown/Dropdown';
+import Email from '../Emailform/Email';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -25,12 +26,25 @@ const Userbody = ({
 
     const [acc, setacc] = useState(false)
     function toggleacc() {
-        console.log("i am account")
+        // console.log("i am account")
         if (acc === false) {
             setacc(true)
         }
         else {
             setacc(false)
+        }
+    }
+
+    const [mail, setmail] = useState(false)
+
+
+    function showmail() {
+        // console.log("i am mail")
+        if (mail === false) {
+            setmail(true)
+        }
+        else {
+            setmail(false)
         }
     }
 
@@ -47,8 +61,12 @@ const Userbody = ({
                 </div>
                 <div className='buttons'>
                     <DropDown />
-
-                    <button className='emailbtn'>Send Email</button>
+                    <button className='emailbtn' onClick={showmail}>Send Email</button>
+                    {
+                        mail && <div className='emailbody'>
+                            <Email showmail={showmail} />
+                        </div>
+                    }
 
                     <button className='addusrbtn' onClick={toggleacc}  >Add User</button>
                     {

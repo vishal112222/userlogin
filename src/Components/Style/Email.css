@@ -1,0 +1,99 @@
+.emailbody{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background-color: rgba(129, 128, 128, 0.9);
+  }
+
+
+.email-form {
+    max-width: 600px;
+    width: 530px;
+    margin: auto;
+    /* border: 1px solid black; */
+    padding: 40px;
+    border-radius: 12px;
+   
+}
+
+.email-form h2{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.bodylabel{
+    color: #878d98;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+#to{
+    border: none;
+    border-bottom:#b2b8c3 2px solid;
+    padding: 0px;
+    
+}
+
+textarea{
+    border: none;
+}
+
+input:focus, textarea{
+    outline: none;
+} 
+
+.formstyle {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.bodylabel {
+    margin-bottom: 5px;
+}
+
+.datafield {
+    margin-bottom: 20px;
+}
+
+.emailbuttons button {
+   padding: 5px 16px; 
+   border-radius: 22px;
+   background-color: #327FFC;
+   color: white;
+   text-align: center;
+   align-items: center;
+   font-size: 15px;
+   border: none;
+}
+
+
+.emailbuttons button:hover{
+    background-color: #1959E6;
+}
+
+#clrbtn{
+    background-color: #D1D5DB;
+    color: rgb(34, 34, 34);
+}
+
+#clrbtn:hover{
+    background-color: #636a74;
+    color: white;
+}
+
+.emailbuttons button:last-child {
+    margin-right: 0; 
+}
+
+.btns{
+    float: right;
+    margin-left: 10px; 
+}
+.email-form{
+    background-color: white;
+    margin-top:200px;
+}
