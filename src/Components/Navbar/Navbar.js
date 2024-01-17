@@ -26,7 +26,7 @@ const Navbar = () => {
                                 <Link className='link' to="/Collector">Collector</Link>
                             </li>
                             <li >
-                                <Link className='link' to="/Usr">Users</Link>
+                                <Link className='link' to="/user">Users</Link>
                             </li>
                             <li >
                                 <Link className='link' to="/">Areas</Link>

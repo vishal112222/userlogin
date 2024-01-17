@@ -1,0 +1,19 @@
+.collectordrop{
+    margin-left: 550px;
+}
+
+.headerbuttons{
+    display: flex;
+    padding-top: 15px;
+}
+
+
+.zonebutton{
+    margin-left: 450px;
+}
+.zoneplacebutton{
+    margin-left: 17px;
+}
+.collectorbutton{
+    margin-left: 17px;
+}

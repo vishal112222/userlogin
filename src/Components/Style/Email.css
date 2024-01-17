@@ -15,6 +15,8 @@
     /* border: 1px solid black; */
     padding: 40px;
     border-radius: 12px;
+    background-color: white;
+    margin-top:200px;
    
 }
 
@@ -92,8 +94,4 @@ input:focus, textarea{
 .btns{
     float: right;
     margin-left: 10px; 
-}
-.email-form{
-    background-color: white;
-    margin-top:200px;
 }

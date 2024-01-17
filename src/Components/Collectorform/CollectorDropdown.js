@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-export default function DropDown({ onSelect }) {
-  const [selectedLocation, setSelectedLocation] = useState('');
-  const handleChange = (event) => {
-    const newValue = event.target.value;
-    setSelectedLocation(newValue);
-    onSelect(newValue);
-  };
+import React from 'react';
+
+const CollectorDropdown = ({droptitle}) => {
+
+    // value={selectedLocation} onChange={handleChange}
   return (
-    <div className="dropdown">
-      <select value={selectedLocation} onChange={handleChange}>
+    <div className="collector-dropdown">
+      <select >
+        <option value="" disabled selected className='zonetitle'>{droptitle}</option>
         <option value="naukrw8w_chd_donordb">Chandigarh</option>
         <option value="naukrw8w_mum_donordb">Mumbai</option>
         <option value="naukrw8w_donordatabase">Delhi</option>
@@ -20,8 +18,4 @@ export default function DropDown({ onSelect }) {
   );
 }
 
-
-
-
-
-
+export default CollectorDropdown;
