@@ -33,7 +33,6 @@ const Userbody = ({ ListOfTable, setSelectedLocation, onEmailSubmit, fetch }) =>
     return (
         <>
             <div className='userbackground'>
-
                 <div className='userheading'>
                     <h2>Users</h2>
                 </div>
@@ -74,10 +73,9 @@ const Userbody = ({ ListOfTable, setSelectedLocation, onEmailSubmit, fetch }) =>
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </>
     );
 }
-
 export default Userbody;
+

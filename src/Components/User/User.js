@@ -86,7 +86,13 @@ const User = () => {
     return (
         <>
             <div className='main'>
+            <div className='main'>
                 <Userbody
+                    ListOfTable={ListOfTable}
+                    setSelectedLocation={setSelectedLocation}
+                    onEmailSubmit={handleEmailSubmit}
+                    fetch={fetchData}
+                />
                     ListOfTable={ListOfTable}
                     setSelectedLocation={setSelectedLocation}
                     onEmailSubmit={handleEmailSubmit}
