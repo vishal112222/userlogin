@@ -3,11 +3,13 @@ import Input from '../Input/Input';
 import Buttons from '../Buttons/Buttons';
 import CollectorDropdown from './CollectorDropdown';
 import axios from 'axios';
+
 const Zoneplace = ({ backzoneplace, selectedLocation }) => {
   const [selectedZone, setSelectedZone] = useState('');
   const [zonePlaceData, setZonePlaceData] = useState({ zonePlaceName: '', });
   const [selectedZonePlace, setSelectedZonePlace] = useState('');
   const [obj, setobj] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,8 +23,6 @@ const Zoneplace = ({ backzoneplace, selectedLocation }) => {
       console.error(err);
     }
   };
-
-
 
   const Submit = async () => {
 
@@ -42,8 +42,6 @@ const Zoneplace = ({ backzoneplace, selectedLocation }) => {
     const newValue = event.target.value;
     setSelectedZone(newValue);
   };
-
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
