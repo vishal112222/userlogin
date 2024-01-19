@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-export default function DropDown() {
+export default function DropDown({ onSelect }) {
+  const storedLocation = localStorage.getItem('selectedLocation') || '';
+
+  useEffect(() => {
+    onSelect(storedLocation);
+  }, [onSelect, storedLocation]);
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    localStorage.setItem('selectedLocation', newValue);
+    onSelect(newValue);
+  };
+
   return (
-    <div class="dropdown">
-  <select>
-    <option value="" disabled selected>Select Location</option>
-    <option value="location1">Chandigarh</option>
-    <option value="location2">Mumbai</option>
-    <option value="location2">Delhi</option>
-    <option value="location2">Jalandhar</option>
-    <option value="location2">Ludhiana</option>
-    {/* <!-- Add more options as needed --> */}
-  </select>
-</div>
-  )
+    <div className="dropdown">
+      <select value={storedLocation} onChange={handleChange}>
+        <option value="naukrw8w_chd_donordb">Chandigarh</option>
+        <option value="naukrw8w_mum_donordb">Mumbai</option>
+        <option value="naukrw8w_donordatabase">Delhi</option>
+        <option value="naukrw8w_jal_donordb">Jalandhar</option>
+        <option value="naukrw8w_ldh_donordb">Ludhiana</option>
+      </select>
+    </div>
+  );
 }

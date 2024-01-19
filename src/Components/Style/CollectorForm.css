@@ -1,0 +1,99 @@
+.formbackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background-color: rgba(129, 128, 128, 0.9);
+   
+}
+
+.form-body{
+    max-width: 600px;
+    width: 400px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 12px;
+    background-color: white;
+    margin-top:200px;
+    
+}
+.form-body h2{
+    text-align: center;
+    display: block;
+    font-size: 30px;
+}
+
+
+
+/* Input Field css */
+.inputdiv{
+  margin: 2px;
+  
+}
+
+
+
+.Formlabel{
+  color: #878d98;
+  font-weight: 400;
+  font-size: 15px;
+  display: block;
+  margin-top: 30px;
+}
+
+.Formfield{
+  border: none;
+  border-bottom: 2px solid #d4d4d4;
+  width: 400px;
+
+}
+
+
+/* buttons css */
+
+.zonebuttons{
+  display: flex;
+  margin-top: 30px;
+  
+}
+
+.BackButton{
+  margin-left: 2px;
+}
+
+.ResetButton{
+  margin-left: 128px;
+  
+}
+
+.SaveButton{
+  margin-left: 11px;
+  
+}
+
+/* collector dropdown css */
+
+.collector-dropdown{
+  margin-top: 20px;
+  
+  
+}
+.collector-dropdown select{
+  border: none;
+  border-bottom: 2px solid #d4d4d4;
+  width: 400px;
+  color: #878d98;
+  font-size: 15px;
+  padding-bottom: 5px;
+}
+
+select option{
+  color: #404040;
+}
+
+
+
+select .zonetitle{
+  color: #d4d4d4;
+}

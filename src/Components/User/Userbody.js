@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
 import Crtacc from '../Form/Crtacc';
 import DropDown from '../Dropdown/Dropdown';
+import Email from '../emailForm/email';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
-
-
-
-const Userbody = ({
-    save,
-    Firstname,
-    Lastname,
-    email,
-    phone,
-    address,
-    show,
-    setFirstname,
-    setLastname,
-    setaddress,
-    setemail,
-    setphone,
-    ListOfTable }) => {
-
+const Userbody = ({ ListOfTable, setSelectedLocation, onEmailSubmit, fetch }) => {
 
     const [acc, setacc] = useState(false)
+    const [mail, setmail] = useState(false)
+
+    function showmail() {
+        if (mail === false) {
+            setmail(true)
+        } else {
+            setmail(false)
+        }
+    }
+
     function toggleacc() {
-        console.log("i am account")
         if (acc === false) {
             setacc(true)
         }
@@ -33,7 +26,9 @@ const Userbody = ({
             setacc(false)
         }
     }
-
+    const handleSelect = (value) => {
+        setSelectedLocation(value);
+    };
 
     return (
         <>
@@ -46,23 +41,25 @@ const Userbody = ({
                     <hr className='line' />
                 </div>
                 <div className='buttons'>
-                    <DropDown />
+                    <DropDown onSelect={handleSelect} />
 
-                    <button className='emailbtn'>Send Email</button>
+                    <button className='emailbtn' onClick={showmail} >Send Email</button>
+                    {
+                        mail && <div className='emailbody'>
+                            <Email showmail={showmail} onEmailSubmit={onEmailSubmit} fetchdata={fetch} />
+                        </div>
+                    }
 
                     <button className='addusrbtn' onClick={toggleacc}  >Add User</button>
                     {
                         acc && <div className='body'>
-                            <Crtacc toggleacc={toggleacc} />
+                            <Crtacc toggleacc={toggleacc} fetchdata={fetch} />
                         </div>
                     }
-
-
                 </div>
 
-
-                <div className='tab'>
-                    <table cellSpacing={0} >
+                <div className='tab' style={{ overflowY: 'auto', maxHeight: '350px' }}>
+                    <table cellSpacing={0}  >
                         <thead className='tablehead'>
                             <th>Username</th>
                             <th>First Name</th>
@@ -73,62 +70,7 @@ const Userbody = ({
                             <th>Actions</th>
                         </thead>
                         <tbody>
-                            {/* {ListOfTable} */}
-                            <tr className='tablerow'>
-
-                                {/* <td>{data.Username}</td>
-                                <td>{data.Firstname}</td>
-                                <td>{data.Lastname}</td>
-                                <td>{data.email}</td>
-                                <td>{data.phone}</td>
-                                <td>{data.address}</td> */}
-                                <td>rupinder98</td>
-                                <td>Rupinder</td>
-                                <td>Singh</td>
-                                <td>Rupinderbrar860@gmail.com</td>
-                                <td>9779765837</td>
-                                <td>jodhpur pakhar</td>
-                                <td>
-                                    <button className='icon'> <FontAwesomeIcon icon={faPenToSquare} /></button>
-                                    <button className='icon'> <FontAwesomeIcon icon={faTrash} /></button>
-                                </td>
-                            </tr>
-                            <tr className='tablerow'>
-                                <td>rupinder98</td>
-                                <td>Rupinder</td>
-                                <td>Singh</td>
-                                <td>Rupinderbrar860@gmail.com</td>
-                                <td>9779765837</td>
-                                <td>jodhpur pakhar</td>
-                                <td>
-                                    <button className='icon'> <FontAwesomeIcon icon={faPenToSquare} /></button>
-                                    <button className='icon'> <FontAwesomeIcon icon={faTrash} /></button>
-                                </td>
-                            </tr>
-                            <tr className='tablerow'>
-                                <td>rupinder98</td>
-                                <td>Rupinder</td>
-                                <td>Singh</td>
-                                <td>Rupinderbrar860@gmail.com</td>
-                                <td>9779765837</td>
-                                <td>jodhpur pakhar</td>
-                                <td>
-                                    <button className='icon'> <FontAwesomeIcon icon={faPenToSquare} /></button>
-                                    <button className='icon'> <FontAwesomeIcon icon={faTrash} /></button>
-                                </td>
-                            </tr>
-                            <tr className='tablerow'>
-                                <td>rupinder98</td>
-                                <td>Rupinder</td>
-                                <td>Singh</td>
-                                <td>Rupinderbrar860@gmail.com</td>
-                                <td>9779765837</td>
-                                <td>jodhpur pakhar</td>
-                                <td>
-                                    <button className='icon'> <FontAwesomeIcon icon={faPenToSquare} /></button>
-                                    <button className='icon'> <FontAwesomeIcon icon={faTrash} /></button>
-                                </td>
-                            </tr>
+                            {ListOfTable}
                         </tbody>
                     </table>
                 </div>

@@ -1,44 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import MyInput from './MyInput';
 import Tiles from './Tiles';
 import axios from "axios"
 
-const Crtacc = ({ toggleacc }) => {
+const Crtacc = ({ toggleacc}) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const defaults = {
-        "Mumbai": false,
-        "Delhi": false,
-        "Chandigarh": false,
-        "Ludhiana": false,
-        "jalandhar": false
+    const locationMappings = {
+        "naukrw8w_ldh_donordb": false,
+        "naukrw8w_chd_donordb": false,
+        "naukrw8w_jal_donordb": false,
+        "naukrw8w_donordatabase": false,
+        "naukrw8w_mum_donordb": false,
     };
-    const [locations, setLocations] = useState(defaults)
+    const [locations, setLocations] = useState(locationMappings)
     const selectedLocations = Object.keys(locations).filter((key) => locations[key]);
-
+    console.log(selectedLocations)
     const Submit = async (data) => {
 
-        // console.log
         try {
-            const response = await axios.post('http://localhost:3000/api/scripts/mms-user', JSON.stringify({
-                selectedLocations: JSON.stringify(selectedLocations),
-                additionalData: JSON.stringify(data),
+            await axios.post('/api/scripts/mms-user', JSON.stringify({
+                selectedLocations: selectedLocations,
+                additionalData: data
             }));
-            console.log(response.data);
         } catch (error) {
             console.error('API request error:', error);
         }
     };
 
-    const onToggle = (name) => {
-
-        const prevValue = locations[name];
-        setLocations({
+    const toggleLocation = (locationKey) => {
+        setLocations(locations => ({
             ...locations,
-            [name]: !prevValue
-        })
-    }
+            [locationKey]: !locations[locationKey]
+        }));
+    };
+
+
+
 
     return (
         <>
@@ -48,7 +47,7 @@ const Crtacc = ({ toggleacc }) => {
                         <span className='userhead'>Create User</span>
                     </div>
 
-                    <form onSubmit={handleSubmit(Submit)} className='formbody' method='POST'>
+                    <form onSubmit={handleSubmit(Submit)} action='/user/ssd' className='formbody' method='POST'>
                         <div className="form-row">
                             <MyInput name={"firstname"} errMsg={"First Name field is required"} errors={errors} register={register} label={"FirstName"} />
                             <MyInput name={"lastname"} errMsg={"Last Name field is required"} errors={errors} register={register} label={"LastName"} />
@@ -72,11 +71,11 @@ const Crtacc = ({ toggleacc }) => {
 
                             <div className='slections'>
 
-                                <Tiles name={"Mumbai"} onClick={onToggle} isSelected={locations["Mumbai"]} />
-                                <Tiles name={"Delhi"} onClick={onToggle} isSelected={locations["Delhi"]} />
-                                <Tiles name={"Chandigarh"} onClick={onToggle} isSelected={locations["Chandigarh"]} />
-                                <Tiles name={"Ludhiana"} onClick={onToggle} isSelected={locations["Ludhiana"]} />
-                                <Tiles name={"Jalandhar"} onClick={onToggle} isSelected={locations["Jalandhar"]} />
+                                <Tiles name={"Mumbai"} onClick={() => toggleLocation("naukrw8w_mum_donordb")} isSelected={locations["naukrw8w_mum_donordb"]} />
+                                <Tiles name={"Delhi"} onClick={() => toggleLocation("naukrw8w_donordatabase")} isSelected={locations["naukrw8w_donordatabase"]} />
+                                <Tiles name={"Chandigarh"} onClick={() => toggleLocation("naukrw8w_chd_donordb")} isSelected={locations["naukrw8w_chd_donordb"]} />
+                                <Tiles name={"Ludhiana"} onClick={() => toggleLocation("naukrw8w_ldh_donordb")} isSelected={locations["naukrw8w_ldh_donordb"]} />
+                                <Tiles name={"Jalandhar"} onClick={() => toggleLocation("naukrw8w_jal_donordb")} isSelected={locations["naukrw8w_jal_donordb"]} />
 
                             </div>
 
