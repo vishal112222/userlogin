@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 export default function Email({ showmail, onEmailSubmit, fetchdata }) {
     const [to, setTo] = useState('');
     const [body, setBody] = useState('');
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const emailData = { to, body };
@@ -23,6 +22,5 @@ export default function Email({ showmail, onEmailSubmit, fetchdata }) {
                 </div>
             </form>
         </div>
-
     )
 }

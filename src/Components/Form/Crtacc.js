@@ -1,18 +1,13 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import MyInput from './MyInput';
 import Tiles from './Tiles';
 import axios from "axios"
 
-const Crtacc = ({ toggleacc}) => {
+const Crtacc = ({ toggleacc }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const locationMappings = {
-        "naukrw8w_ldh_donordb": false,
-        "naukrw8w_chd_donordb": false,
-        "naukrw8w_jal_donordb": false,
-        "naukrw8w_donordatabase": false,
-        "naukrw8w_mum_donordb": false,
+
     const locationMappings = {
         "naukrw8w_ldh_donordb": false,
         "naukrw8w_chd_donordb": false,
@@ -20,7 +15,7 @@ const Crtacc = ({ toggleacc}) => {
         "naukrw8w_donordatabase": false,
         "naukrw8w_mum_donordb": false,
     };
-    const [locations, setLocations] = useState(locationMappings)
+
     const [locations, setLocations] = useState(locationMappings)
     const selectedLocations = Object.keys(locations).filter((key) => locations[key]);
     console.log(selectedLocations)
@@ -30,9 +25,7 @@ const Crtacc = ({ toggleacc}) => {
             await axios.post('/api/scripts/mms-user', JSON.stringify({
                 selectedLocations: selectedLocations,
                 additionalData: data
-            await axios.post('/api/scripts/mms-user', JSON.stringify({
-                selectedLocations: selectedLocations,
-                additionalData: data
+
             }));
         } catch (error) {
             console.error('API request error:', error);

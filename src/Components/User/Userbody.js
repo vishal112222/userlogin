@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Crtacc from '../Form/Crtacc';
 import DropDown from '../Dropdown/Dropdown';
-import Email from '../emailForm/email';
+import Email from '../emailForm/Email';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
